@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color:lime;
+    }
+    td,button{
+        border: hidden;
+        width:100px;
+        height:50px;
+        font-size: 30px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        background-color:darkgray;
+        ;
+    }
+    th{
+        border: white;
+        text-align: right;
+        color: white ;
+        background-color:greenyellow;
+        font-size: 30px;
+
+    }
+</style>
+
+<body>
+    <table style="padding:50px 50px 100px 100px">
+        <tr>
+            <th colspan="5" id="result"></th>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn" value="7">7</button>
+            </td>
+            <td>
+                <button class="btn" value="8">8</button>
+
+            </td>
+            <td>
+                <button class="btn" value="9">9</button>
+
+            </td>
+            <td>
+                <button class="btn" onclick="undo()">DEL</button>
+
+            </td>
+            <td>
+                <button class="btn" onclick="clean()">AC</button>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn" value="4">4</button>
+            </td>
+            <td>
+                <button class="btn" value="5">5</button>
+            </td>
+            <td>
+                <button class="btn" value="6">6</button>
+            </td>
+            <td>
+                <button class="btn" value="*">X</button>
+            </td>
+            <td>
+                <button class="btn" value="/">/</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn" value="1">1</button>
+            </td>
+            <td>
+                <button class="btn" value="2">2</button>
+            </td>
+            <td>
+                <button class="btn" value="3">3</button>
+            </td>
+            <td>
+                <button class="btn" value="+">+</button>
+            </td>
+            <td>
+                <button class="btn" value="-">-</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn" value="0">0</button>
+            </td>
+            <td>
+                <button class="btn" value=".">.</button>
+            </td>
+            <td>
+            </td>
+            <td>
+                <button class="btn" onclick="equal()">=</button>
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
+</body>
+<script>
+    const numbers = document.getElementsByClassName("btn");
+    const result = document.getElementById("result");
+
+    for(let number of numbers){
+        number.addEventListener('click', function(){
+            result.innerHTML += this.value
+        });
+    }
+    function equal(){
+        let res = result.innerHTML;
+        let output = eval(res);
+        result.innerHTML = output;
+
+    }
+    function clean(){
+        result.innerHTML="";
+    }
+    function undo(){
+        let res = result.innerHTML;
+        result.innerHTML = res.substring(0,res.length - 1);
+    }
+
+</script>
+
+</html>
